@@ -13,14 +13,17 @@ struct PairRow: View {
     var multiplier: Double
     
     var body: some View {
+        let ten = Double(amount)?.ten(index) ?? 0
         HStack {
             Text("MXN")
                 .fontWeight(.bold)
-            Text(String(Double(amount)?.ten(index) ?? 0))
+            Text(String(ten))
+                .font(.title3)
             Spacer()
             Text("BOB")
                 .fontWeight(.bold)
-            Text((Double((Int(Double(amount)?.ten(index) ?? 0))) * multiplier).format)
+            Text((Double((Int(ten))) * multiplier).format)
+                .font(.title3)
         }
     }
 }

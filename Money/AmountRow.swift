@@ -11,14 +11,21 @@ struct AmountRow: View {
     @Binding var amount: String
     var currency: String
     var multiplier: Double
-    var index: Int = 0
+    var important: Bool = false
     
     var body: some View {
+        let value = ((Double(amount) ?? 0) * multiplier).format
         HStack {
             Spacer()
             Text(currency)
                 .fontWeight(.bold)
-            Text(((Double(amount) ?? 0) * multiplier).format)
+            if important {
+                Text(value)
+                    .font(.title)
+            } else {
+                Text(value)
+                    .font(.title3)
+            }
         }
     }
 }
