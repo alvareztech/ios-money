@@ -24,6 +24,9 @@ struct ContentView: View {
                             .onChange(of: amount, perform: { value in
                                 print("New value? \(value)")
                             })
+                            .onTapGesture {
+                                self.amount = ""
+                            }
                     }
                     AmountRow(amount: $amount, currency: "BOB", multiplier: 0.34, important: true)
                     AmountRow(amount: $amount, currency: "USD", multiplier: 0.050)
@@ -36,6 +39,9 @@ struct ContentView: View {
             }
             .navigationBarTitle("Money")
             .listStyle(InsetGroupedListStyle())
+            .gesture(DragGesture().onChanged({ _ in
+                self.hideKeyboard()
+            }))
         }
     }
 }
@@ -45,3 +51,11 @@ struct ContentView_Previews: PreviewProvider {
         ContentView()
     }
 }
+
+#if canImport(UIKit)
+extension View {
+    func hideKeyboard() {
+        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+    }
+}
+#endif
