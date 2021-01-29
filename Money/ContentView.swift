@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State var amount: String = ""
+    @State var amount: String = "100"
     
     var body: some View {
         NavigationView {
