@@ -17,13 +17,17 @@ struct PairRow: View {
         HStack {
             Text("MXN")
                 .fontWeight(.bold)
+                .foregroundColor(.secondary)
             Text(String(ten))
                 .font(.title3)
+                .foregroundColor(.secondary)
             Spacer()
             Text("BOB")
+                .foregroundColor(.secondary)
                 .fontWeight(.bold)
             Text((Double((Int(ten))) * multiplier).format)
                 .font(.title3)
+                .foregroundColor(.secondary)
         }
     }
 }
